@@ -3,14 +3,21 @@ body {
   background-color: #011f3f;
 }
 
-.wrong{
+.wrong {
   background-color: red;
 }
 
 #level-title {
   font-family: "Press Start 2P", cursive;
   font-size: 3rem;
-  margin: 5%;
+  margin: 3%;
+  color: #fef2bf;
+}
+
+footer {
+  font-family: "Press Start 2P", cursive;
+  font-size: 1rem;
+  margin-top: 2%;
   color: #fef2bf;
 }
 

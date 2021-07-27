@@ -22,97 +22,110 @@ function nextSequence() {
 
 $(document).on("keydown", function () {
   if (level == 0) setTimeout(nextSequence, 1000);
+  else if (level == -1) restartGame();
 });
 
 $(".green").on("click", function () {
-  userChosenColor = "green";
-  userClickedPattern.push(userChosenColor);
-  if (gamePattern[pointer] === userClickedPattern[pointer]) {
-    playSound(userChosenColor);
-    animatePress(userChosenColor);
-    if (pointer === gamePattern.length - 1) {
-      pointer = 0;
-      userClickedPattern = [];
-      setTimeout(nextSequence, 1000);
+  if (level > 0) {
+    userChosenColor = "green";
+    userClickedPattern.push(userChosenColor);
+    if (gamePattern[pointer] === userClickedPattern[pointer]) {
+      playSound(userChosenColor);
+      animatePress(userChosenColor);
+      if (pointer === gamePattern.length - 1) {
+        pointer = 0;
+        userClickedPattern = [];
+        setTimeout(nextSequence, 1000);
+      } else {
+        pointer++;
+      }
     } else {
-      pointer++;
+      playSound("wrong");
+      $("body").addClass("red");
+      setTimeout(function () {
+        $("body").removeClass("red");
+      }, 300);
+      $("#level-title").text("You lost. Press any key to restart");
+      level = -1;
     }
-  } else {
-    playSound("wrong");
-    $("body").addClass("red");
-    setTimeout(function () {
-      $("body").removeClass("red");
-    }, 300);
-    $("#level-title").text("Haar gaya bhadwe?");
   }
 });
 
 $(".red").on("click", function () {
-  userChosenColor = "red";
-  userClickedPattern.push(userChosenColor);
-  if (gamePattern[pointer] === userClickedPattern[pointer]) {
-    playSound(userChosenColor);
-    animatePress(userChosenColor);
-    if (pointer === gamePattern.length - 1) {
-      pointer = 0;
-      userClickedPattern = [];
-      setTimeout(nextSequence, 1000);
+  if (level > 0) {
+    userChosenColor = "red";
+    userClickedPattern.push(userChosenColor);
+    if (gamePattern[pointer] === userClickedPattern[pointer]) {
+      playSound(userChosenColor);
+      animatePress(userChosenColor);
+      if (pointer === gamePattern.length - 1) {
+        pointer = 0;
+        userClickedPattern = [];
+        setTimeout(nextSequence, 1000);
+      } else {
+        pointer++;
+      }
     } else {
-      pointer++;
+      playSound("wrong");
+      $("body").addClass("red");
+      setTimeout(function () {
+        $("body").removeClass("red");
+      }, 300);
+      $("#level-title").text("You lost. Press any key to restart");
+      level = -1;
     }
-  } else {
-    playSound("wrong");
-    $("body").addClass("red");
-    setTimeout(function () {
-      $("body").removeClass("red");
-    }, 300);
-    $("#level-title").text("Haar gaya bhadwe?");
   }
 });
 
 $(".blue").on("click", function () {
-  userChosenColor = "blue";
-  userClickedPattern.push(userChosenColor);
-  if (gamePattern[pointer] === userClickedPattern[pointer]) {
-    playSound(userChosenColor);
-    animatePress(userChosenColor);
-    if (pointer === gamePattern.length - 1) {
-      pointer = 0;
-      userClickedPattern = [];
-      setTimeout(nextSequence, 1000);
+  if (level > 0) {
+    userChosenColor = "blue";
+    userClickedPattern.push(userChosenColor);
+    if (gamePattern[pointer] === userClickedPattern[pointer]) {
+      playSound(userChosenColor);
+      animatePress(userChosenColor);
+      if (pointer === gamePattern.length - 1) {
+        pointer = 0;
+        userClickedPattern = [];
+        setTimeout(nextSequence, 1000);
+      } else {
+        pointer++;
+      }
     } else {
-      pointer++;
+      playSound("wrong");
+      $("body").addClass("red");
+      setTimeout(function () {
+        $("body").removeClass("red");
+      }, 300);
+      $("#level-title").text("You lost. Press any key to restart");
+      level = -1;
     }
-  } else {
-    playSound("wrong");
-    $("body").addClass("red");
-    setTimeout(function () {
-      $("body").removeClass("red");
-    }, 300);
-    $("#level-title").text("Haar gaya bhadwe?");
   }
 });
 
 $(".yellow").on("click", function () {
-  userChosenColor = "yellow";
-  userClickedPattern.push(userChosenColor);
-  if (gamePattern[pointer] === userClickedPattern[pointer]) {
-    playSound(userChosenColor);
-    animatePress(userChosenColor);
-    if (pointer === gamePattern.length - 1) {
-      pointer = 0;
-      userClickedPattern = [];
-      setTimeout(nextSequence, 1000);
+  if (level > 0) {
+    userChosenColor = "yellow";
+    userClickedPattern.push(userChosenColor);
+    if (gamePattern[pointer] === userClickedPattern[pointer]) {
+      playSound(userChosenColor);
+      animatePress(userChosenColor);
+      if (pointer === gamePattern.length - 1) {
+        pointer = 0;
+        userClickedPattern = [];
+        setTimeout(nextSequence, 1000);
+      } else {
+        pointer++;
+      }
     } else {
-      pointer++;
+      playSound("wrong");
+      $("body").addClass("red");
+      setTimeout(function () {
+        $("body").removeClass("red");
+      }, 300);
+      $("#level-title").text("You lost. Press any key to restart");
+      level = -1;
     }
-  } else {
-    playSound("wrong");
-    $("body").addClass("red");
-    setTimeout(function () {
-      $("body").removeClass("red");
-    }, 300);
-    $("#level-title").text("Haar gaya bhadwe?");
   }
 });
 
@@ -126,4 +139,11 @@ function animatePress(className) {
   setTimeout(function () {
     $("." + className).removeClass("pressed");
   }, 100);
+}
+
+function restartGame() {
+  level = 0;
+  gamePattern = [];
+  userClickedPattern = [];
+  setTimeout(nextSequence, 1000);
 }
